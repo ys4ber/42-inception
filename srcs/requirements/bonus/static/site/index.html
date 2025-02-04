@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef - Software Developer</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        section {
+            margin: 3rem 0;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .project {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tech-stack {
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>YOUSSEF SABER</h1>
+            <div class="contact-info">
+                <p>Email: youss42@proton.me | Location: Morocco</p>
+                <p><a href="https://github.com/ys4ber">LinkedIn</a> | <a href="https://www.linkedin.com/in/youssef-saber-994562297/">GitHub</a></p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="education">
+            <h2>EDUCATION</h2>
+            <h3>1337 School (42 Network)</h3>
+            <p>Benguerir, Morocco</p>
+            <ul>
+                <li>Completed Common Core Curriculum | 2023</li>
+                <li>Rigorous peer-to-peer learning program focused on software development</li>
+                <li>Developed strong problem-solving and collaboration skills through project-based learning</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>TECHNICAL PROJECTS</h2>
+            <div class="project">
+                <h3>webserv <span class="tech-stack">C++</span></h3>
+                <ul>
+                    <li>Built a HTTP/1.1 compliant web server from scratch</li>
+                    <li>Implemented non-blocking I/O with select/poll/epoll</li>
+                    <li>Handled multiple client connections, request parsing, and response generation</li>
+                    <li>Managed file uploads, CGI execution, and error handling</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h3>inception <span class="tech-stack">Docker, System Administration</span></h3>
+                <ul>
+                    <li>Loading ...</li>
+                    <li>This project is in the evaluation phase</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>TECHNICAL SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <ul>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>Shell Scripting</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Frameworks/Technologies</h4>
+                    <ul>
+                        <li>Django</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="languages">
+            <h2>LANGUAGES</h2>
+            <ul>
+                <li>Arabic: * * * * *</li>
+                <li>French: * * *</li>
+                <li>English: * * * * *</li>
+            </ul>
+        </section>
+
+        <section id="interests">
+            <h2>INTERESTS</h2>
+            <ul>
+                <li>Cybersecurity</li>
+                <li>System Programming</li>
+                <li>Network Security</li>
+                <li>Continuous Learning</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

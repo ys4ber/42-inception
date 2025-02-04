@@ -1,0 +1,131 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: nginx
+    build: 
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    build:
+      context: ./requirements/wordPress
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - inception
+    restart: always
+
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariaDB
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+
+  redis:
+    build: 
+      context: ./requirements/bonus/redis
+      dockerfile: Dockerfile
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - inception
+    restart: always
+
+  adminer:
+    build: 
+      context: ./requirements/bonus/adminer
+      dockerfile: Dockerfile
+    container_name: adminer
+    networks:
+      - inception
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    restart: always
+  portainer:
+    build: 
+      context: ./requirements/bonus/portainer
+      dockerfile: Dockerfile
+    container_name: portainer
+    networks:
+      - inception
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: always
+
+  static:
+    image: srcs_static:latest
+    build:
+      context: ./requirements/bonus/static
+      dockerfile: Dockerfile
+    container_name: static
+    ports:
+      - "3000:3000"
+    networks:
+      - inception
+    restart: always
+
+  ftp:
+    build:
+      context: ./requirements/bonus/ftp
+      dockerfile: Dockerfile
+    container_name: ftp
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    volumes:
+      - wordpress:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - inception
+    restart: always
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ysaber42/data/wordpress
+      o: bind
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ysaber42/data/mariadb
+      o: bind
+  portainer_data:
+    driver: local
+
+networks:
+  inception:
+    driver: bridge
